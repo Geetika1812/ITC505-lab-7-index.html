@@ -1,0 +1,99 @@
+/* Overall page styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+/* Header styling */
+header {
+    background: #ff6f61;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+}
+
+/* Form container */
+.form-container {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Form elements */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    text-align: left;
+    color: #34495e;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #ff6f61;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
+}
+
+/* Button styling */
+button {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 1em;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e55b4e;
+    transform: translateY(-2px);
+}
+
+/* Footer styling */
+footer {
+    background-color: #ff6f61;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 0.9em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 600px) {
+    .form-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+}

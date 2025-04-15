@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mad Libs Game</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(45deg, #FF5F6D, #FFC3A0);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .circle {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: floatCircle 15s linear infinite;
+      filter: blur(30px);
+    }
+
+    @keyframes floatCircle {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(500px, -500px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .circle:nth-child(1) {
+      animation-delay: 0s;
+      top: 5%;
+      left: 10%;
+    }
+
+    .circle:nth-child(2) {
+      animation-delay: 5s;
+      top: 25%;
+      left: 30%;
+    }
+
+    .circle:nth-child(3) {
+      animation-delay: 3s;
+      top: 60%;
+      left: 60%;
+    }
+
+    .circle:nth-child(4) {
+      animation-delay: 8s;
+      top: 75%;
+      left: 70%;
+    }
+
+    header {
+      background-color: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 700px;
+      margin: 50px auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease;
+      width: 100%;
+      flex-grow: 1; /* Ensure the content container takes available space */
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    form label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    form input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border-radius: 10px;
+      border: none;
+      background: #fff;
+      font-size: 16px;
+    }
+
+    button {
+      background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+      color: #fff;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin-top: auto; /* Push footer to the bottom */
+    }
+
+    .addendum {
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <header>
+    <h1>🎨 Mad Libs Magic</h1>
+    <p>Create fun and silly stories with just a few words!</p>
+  </header>
+
+  <div class="container" id="mainContainer">
+    <form id="madlibForm">
+      <label for="adjective">Adjective:</label>
+      <input type="text" id="adjective" name="adjective" required />
+
+      <label for="noun">Noun:</label>
+      <input type="text" id="noun" name="noun" required />
+
+      <label for="verb">Verb:</label>
+      <input type="text" id="verb" name="verb" required />
+
+      <label for="place">Place:</label>
+      <input type="text" id="place" name="place" required />
+
+      <label for="pluralNoun">Plural Noun:</label>
+      <input type="text" id="pluralNoun" name="pluralNoun" required />
+
+      <button type="submit">✨ Generate My Mad Lib ✨</button>
+    </form>
+
+    <!-- Where the generated story will go -->
+    <div id="storyResult"></div>
+  </div>
+
+  <footer>
+    <div class="addendum">
+      <h3>📌 Addendum</h3>
+      <p>This Mad Libs web application is part of an interactive story project developed using basic frontend technologies including HTML, CSS, and JavaScript. The app allows users to create fun and whimsical stories by filling in different parts of speech, such as adjectives, nouns, and verbs. Once the form is submitted, a personalized Mad Lib is generated using the words provided. The project demonstrates how HTML forms, JavaScript, and dynamic content generation can be used together to create a seamless and interactive user experience. Key features include form handling to process user input dynamically, responsive design to ensure compatibility across various screen sizes, and the ability to generate and display the story without page reloads. Additionally, a random number generator is included through a separate URL to add an extra fun element to the project. This simple app showcases the power of client-side scripting and design principles, while offering potential for future enhancements like saving stories or integrating backend storage capabilities.</p>
+    </div>
+    <p>Last updated: <span id="lastModified"></span></p>
+  </footer>
+
+  <script>
+    // Update timestamp
+    document.getElementById('lastModified').textContent = document.lastModified;
+
+    // Handle form submission
+    document.getElementById('madlibForm').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent page reload
+
+      const adjective = document.getElementById('adjective').value.trim();
+      const noun = document.getElementById('noun').value.trim();
+      const verb = document.getElementById('verb').value.trim();
+      const place = document.getElementById('place').value.trim();
+      const pluralNoun = document.getElementById('pluralNoun').value.trim();
+
+      // Validate inputs
+      if (!adjective || !noun || !verb || !place || !pluralNoun) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      // Generate story
+      const storyHTML = `
+        <h1>Your Mad Lib</h1>
+        <p>Once upon a time, there was a <strong>${adjective}</strong> <strong>${noun}</strong> that loved to <strong>${verb}</strong> in the <strong>${place}</strong>.</p>
+        <p>It had many <strong>${pluralNoun}</strong> to play with and lived happily ever after.</p>
+      `;
+
+      // Display the generated story
+      document.getElementById('storyResult').innerHTML = storyHTML;
+    });
+  </script>
+
+</body>
+</html>
